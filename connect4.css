@@ -1,6 +1,7 @@
 /* game board table */
 
 #board td {
+  border-radius: 7px;
   width: 50px;
   height: 50px;
   border: solid 1px #666;
@@ -8,27 +9,76 @@
 
 /* pieces are div within game table cells: draw as colored circles */
 
-/* Old styling */
-/* .piece {
-  border-radius: 50%;
-  margin: 5px;
-  width: 80%;
-  height: 80%;
-} */
-/* new styling */
 .piece {
   position: absolute;
   top: 0;
   left: 0;
-  /* transform: translate(5px, -20px); */
   border-radius: 50%;
+  border-style: none;
   width: 40px;
   height: 40px;
 }
 
-/* .piece {
-  transition: top 1s;
-} */
+/* Set drop-down animation for each row */
+.row5 {
+  animation-name: drop5;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in;
+}
+@keyframes drop5 {
+  from {top: -336px}
+  to {top: 0}
+}
+
+.row4 {
+  animation-name: drop4;
+  animation-duration: 450ms;
+  animation-timing-function: ease-in;
+}
+@keyframes drop4 {
+  from {top: -280px}
+  to {top: 0}
+}
+
+.row3 {
+  animation-name: drop3;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in;
+}
+@keyframes drop3 {
+  from {top: -224px}
+  to {top: 0}
+}
+
+.row2 {
+  animation-name: drop2;
+  animation-duration: 350ms;
+  animation-timing-function: ease-in;
+}
+@keyframes drop2 {
+  from {top: -168px}
+  to {top: 0}
+}
+
+.row1 {
+  animation-name: drop1;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+@keyframes drop1 {
+  from {top: -112px}
+  to {top: 0}
+}
+
+.row0 {
+  animation-name: drop0;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in;
+}
+@keyframes drop0 {
+  from {top: -56px}
+  to {top: 0}
+}
 
 /* set player 1 class (p1) to red background */
 
@@ -56,4 +106,8 @@
 /* When no class name is on column-top, hover blue */
 #column-top td:hover {
   background-color: rgb(150, 150, 255);
+}
+
+.winner {
+  background-color: rgb(0, 255, 0);
 }

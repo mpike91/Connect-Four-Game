@@ -72,7 +72,7 @@ const findSpotForCol = x => {
 const placeInTable = (y, x) => {
   const td = document.getElementById(`${y}-${x}`);
   const div = document.createElement("div");
-  div.classList.add("piece", `p${currPlayer}`);
+  div.classList.add("piece", `p${currPlayer}`, `row${y}`);
   div.style.transform = `translate(${td.offsetLeft+15}px, ${td.offsetTop+15}px)`;
   td.append(div);
 }
@@ -84,7 +84,7 @@ const endGame = val => {
   setTimeout(()=> {
     if (val === 0) return alert("Tie Game");
     val === 1 ? alert("Red player wins!") : alert("Blue player wins!");
-  })
+  },500)
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -162,11 +162,30 @@ const checkForWin = () => {
       let diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
 
       // For each cell, check if the array contains legal coordinates and all match currPlayer by calling _win function on each array created above, and if any return true, then return true to indicate the currPlayer is the winner
-      if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
-        return true;
+      if (_win(horiz)) {
+        return winBGColor(horiz);
+      }
+      if (_win(vert)) {
+        return winBGColor(vert);
+
+      }
+      if (_win(diagDR)) {
+        return winBGColor(diagDR);
+
+      }
+      if (_win(diagDL)) {
+        return winBGColor(diagDL);
       }
     }
   }
+}
+
+// Receives the "winning" array of cell positions, and sets the background color of each cell to green to "highlight" the position of the winning pieces
+const winBGColor = winner => {
+  for (let td of winner) {
+    document.getElementById(`${td[0]}-${td[1]}`).style.backgroundColor = "rgb(0, 255, 0)";
+  };
+  return true;
 }
 
 makeBoard();
