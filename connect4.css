@@ -1,0 +1,59 @@
+/* game board table */
+
+#board td {
+  width: 50px;
+  height: 50px;
+  border: solid 1px #666;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+/* Old styling */
+/* .piece {
+  border-radius: 50%;
+  margin: 5px;
+  width: 80%;
+  height: 80%;
+} */
+/* new styling */
+.piece {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* transform: translate(5px, -20px); */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+/* .piece {
+  transition: top 1s;
+} */
+
+/* set player 1 class (p1) to red background */
+
+.p1 {
+  background-color: red;
+}
+
+/* set player 2 class (p2) to blue background */
+
+.p2 {
+  background-color: blue;
+}
+
+/* column-top is table row of clickable areas for each column */
+
+#column-top td {
+  border: dashed 1px lightgray;
+}
+
+/* When red class name is on column-top, hover red */
+#column-top.red td:hover {
+  background-color: rgb(255, 150, 150);
+}
+
+/* When no class name is on column-top, hover blue */
+#column-top td:hover {
+  background-color: rgb(150, 150, 255);
+}
